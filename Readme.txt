@@ -1,3 +1,3 @@
 This is a test repos for git.
 
-Create a branch is quick!
+Create a branch is quick & simple
