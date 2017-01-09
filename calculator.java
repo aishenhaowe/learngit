@@ -1,7 +1,8 @@
+
 /**
  *  统一接口
  */
-public interface ICalculator {
+interface ICalculator {
     public int calculate(String exp);
 }
 
@@ -9,8 +10,8 @@ public interface ICalculator {
  *  辅助类
  */
 
-public abstract class AbstractCalculator {
-    
+abstract class AbstractCalculator {
+
     public int[] split(String exp,String opt){
         String array[] = exp.split(opt);
         int arrayInt[] = new int[2];
@@ -24,8 +25,8 @@ public abstract class AbstractCalculator {
  *  加法类
  */
 
-public class Plus extends AbstractCalculator implements ICalculator {
-    
+class Plus extends com.meicai.lihaoran.lottery.view.AbstractCalculator implements com.meicai.lihaoran.lottery.view.ICalculator {
+
     @Override
     public int calculate(String exp) {
         int arrayInt[] = split(exp,"\\+");
@@ -37,8 +38,8 @@ public class Plus extends AbstractCalculator implements ICalculator {
  *  减法类
  */
 
-public class Minus extends AbstractCalculator implements ICalculator {
-    
+class Minus extends com.meicai.lihaoran.lottery.view.AbstractCalculator implements com.meicai.lihaoran.lottery.view.ICalculator {
+
     @Override
     public int calculate(String exp) {
         int arrayInt[] = split(exp,"-");
@@ -50,8 +51,8 @@ public class Minus extends AbstractCalculator implements ICalculator {
  *  乘法类
  */
 
-public class Multiply extends AbstractCalculator implements ICalculator {
-    
+class Multiply extends com.meicai.lihaoran.lottery.view.AbstractCalculator implements com.meicai.lihaoran.lottery.view.ICalculator {
+
     @Override
     public int calculate(String exp) {
         int arrayInt[] = split(exp,"\\*");
@@ -63,32 +64,35 @@ public class Multiply extends AbstractCalculator implements ICalculator {
  *  策略管理类
  */
 class CalculatorContext{
-    private ICalculator innercalculate = null;
-    
-    public void CalculatorContext(ICalculator outcalculate){
-        innercalculate = outcalculate;
+    private com.meicai.lihaoran.lottery.view.ICalculator innercalculate = null;
+
+    public CalculatorContext(com.meicai.lihaoran.lottery.view.ICalculator cal)
+    {
+        innercalculate = cal;
     }
-    
-    public int calculate(String exp){
-        innercalculate.calculate;
-     }
+
+
+    public int calculate(String exp)
+    {
+        return innercalculate.calculate(exp);
+    }
 }
 
 /**
  *  测试主程序
  */
 
-public class StrategyTest {
-    
+class StrategyTest {
+
     public static void main(String[] args) {
-        CalculatorContext context;
-        
+        com.meicai.lihaoran.lottery.view.CalculatorContext context;
+
         String exp = "2+8";
-        ICalculator cal = new Plus();
-        context = new CalculatorContext(cal);
+        com.meicai.lihaoran.lottery.view.ICalculator cal = new com.meicai.lihaoran.lottery.view.Plus();
+        context = new com.meicai.lihaoran.lottery.view.CalculatorContext(cal);
         int result = context.calculate(exp);
         System.out.println(result);
-        
+
     }
 }
 
