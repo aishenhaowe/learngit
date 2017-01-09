@@ -60,19 +60,38 @@ public class Multiply extends AbstractCalculator implements ICalculator {
 }
 
 /**
+ *  策略管理类
+ */
+class CalculatorContext{
+    private ICalculator innercalculate = null;
+    
+    public void CalculatorContext(ICalculator outcalculate){
+        innercalculate = outcalculate;
+    }
+    
+    public int calculate(String exp){
+        innercalculate.calculate;
+     }
+}
+
+/**
  *  测试主程序
  */
 
 public class StrategyTest {
     
     public static void main(String[] args) {
+        CalculatorContext context;
+        
         String exp = "2+8";
         ICalculator cal = new Plus();
-        int result = cal.calculate(exp);
+        context = new CalculatorContext(cal);
+        int result = context.calculate(exp);
         System.out.println(result);
         
     }
 }
+
 
 
 
