@@ -10,6 +10,9 @@ class CalculatorContext{
     }
     
     public int calculate(String exp){
+    	if (null == exp)
+    		return -1;
+    	
         return innercalculate.calculate(exp);
      }
 }
@@ -21,10 +24,17 @@ class CalculatorContext{
 public class StrategyTest {
     
     public static void main(String[] args) {
+    	// Invalid check
+    	if (args.length < 2)
+    	{
+    		System.out.println("Invalid input params");
+    		return;
+    	}
+    	
         CalculatorContext context;
         
-        String exp = "2+8";
-        ICalculator cal = new Plus();
+        String exp = args[1];
+        ICalculator cal = new Minus();
         context = new CalculatorContext(cal);
         int result = context.calculate(exp);
         System.out.println(result);
