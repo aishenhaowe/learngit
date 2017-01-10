@@ -1,5 +1,5 @@
 /**
- *  ¼õ·¨Àà
+ *  
  */
 
 public class Minus extends AbstractCalculator implements ICalculator {

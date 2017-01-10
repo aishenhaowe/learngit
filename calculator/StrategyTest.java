@@ -34,7 +34,7 @@ public class StrategyTest {
         CalculatorContext context;
         
         String exp = args[1];
-        ICalculator cal = new Minus();
+        ICalculator cal = new Div();
         context = new CalculatorContext(cal);
         int result = context.calculate(exp);
         System.out.println(result);
